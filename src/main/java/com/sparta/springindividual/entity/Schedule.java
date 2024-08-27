@@ -27,6 +27,10 @@ public class Schedule extends TimeStamped {
     @OneToMany(mappedBy = "schedule", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Comment> commentList = new ArrayList<>();
 
+    // ScheduleManger 1:N
+    @OneToMany(mappedBy="schedule", orphanRemoval = true)
+    private List<ScheduleManager> scheduleManagerList = new ArrayList<>();
+
 
     public Schedule(String scheduleUsername, String title, String description) {
         this.scheduleUsername = scheduleUsername;
