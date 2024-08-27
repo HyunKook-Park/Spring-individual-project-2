@@ -2,6 +2,8 @@ package com.sparta.springindividual.service;
 
 import com.sparta.springindividual.dto.*;
 import com.sparta.springindividual.entity.Schedule;
+import com.sparta.springindividual.entity.ScheduleManager;
+import com.sparta.springindividual.entity.User;
 import com.sparta.springindividual.repository.CommentRepository;
 import com.sparta.springindividual.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -28,11 +32,17 @@ public class ScheduleService {
         return new ScheduleSaveResponseDto(savedSchedule.getId(), savedSchedule.getScheduleUsername(), savedSchedule.getTitle(), savedSchedule.getDescription(), savedSchedule.getCreatedAt());
     }
 
-    // 요구사항 1단계 schedule 조회
+    // 요구사항 1단계 schedule 조회, 요구사항 6단계 user 정보 추가 조회
     @Transactional(readOnly = true)
     public ScheduleDetailResponseDto getSchedule(Long id) {
         Schedule schedule = findScheduleByIdOrThrow(id);
-        return new ScheduleDetailResponseDto(schedule.getId(), schedule.getTitle(), schedule.getDescription(), schedule.getCreatedAt());
+        List<UserManagerDetailResponseDto> dtoList = new ArrayList<>();
+        for(ScheduleManager scheduleManager : schedule.getScheduleManagerList()){
+            User user = scheduleManager.getUser();
+            UserManagerDetailResponseDto dto = new UserManagerDetailResponseDto(user.getId(), user.getUserName(), user.getUserEmail());
+            dtoList.add(dto);
+        }
+        return new ScheduleDetailResponseDto(dtoList,schedule.getId(), schedule.getTitle(), schedule.getDescription(), schedule.getCreatedAt());
     }
 
     // 요구사항 1단계 schedule 수정

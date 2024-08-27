@@ -32,7 +32,7 @@ public class Schedule extends TimeStamped {
     private List<ScheduleManager> scheduleManagerList = new ArrayList<>();
 
     // User N:1
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

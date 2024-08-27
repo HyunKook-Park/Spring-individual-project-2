@@ -15,3 +15,8 @@
 | 댓글 목록 조회      | GET    | /api/schedules/{id}/comment       | PathVariable                                                    |  다건 응답 정보<br/>(CommentUserId, CommentUserName, CommentContents,CommentCreationDate, CommentModificationDate)  | 200: 정상 조회 |
 | 댓글 수정         | PUT    | /api/schedules/{id}/comments/{id} | PathVariable<br/>(CommentUserId, CommentContents)               |             수정 정보<br/>(CommentUserId, CommentUserName, CommentContents, CommentModificationDate)              | 200: 정상 수정 |
 | 댓글 삭제         | DELETE | /api/schedules/{id}/comments/{id} | PathVariable<br/>(CommentUserId)                                |                                                     void                                                      | 200: 정상 삭제 |
+
+
+
+# Step 2. (ERD 링크)
+https://www.erdcloud.com/d/YqoaYTx2tjxxwhCpY
