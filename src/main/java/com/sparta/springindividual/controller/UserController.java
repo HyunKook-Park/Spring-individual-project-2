@@ -16,27 +16,27 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/users")
-    public ResponseEntity<UserSaveResponseDto> saveUser(@RequestBody UserSaveRequestDto requestDto){
+    public ResponseEntity<UserSaveResponseDto> saveUser(@RequestBody UserSaveRequestDto requestDto) {
         return ResponseEntity.ok(userService.saveUser(requestDto));
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserSimpleResponseDto>> getAllUsers(){
+    public ResponseEntity<List<UserSimpleResponseDto>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserDetailResponseDto> getUser(@PathVariable Long id){
+    public ResponseEntity<UserDetailResponseDto> getUser(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUser(id));
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<UserUpdateResponseDto> updateUser(@PathVariable Long id, @RequestBody UserUpdateRequestDto requestDto ){
-        return ResponseEntity.ok(userService.updateUser(id));
+    public ResponseEntity<UserUpdateResponseDto> updateUser(@PathVariable Long id, @RequestBody UserUpdateRequestDto requestDto) {
+        return ResponseEntity.ok(userService.updateUser(id, requestDto));
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable Long id){
+    public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 

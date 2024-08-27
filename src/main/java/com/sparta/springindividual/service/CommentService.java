@@ -34,7 +34,7 @@ public class CommentService {
     public CommentSimpleResponseDto getComment(Long scheduleId, Long id) {
         Schedule schedule = scheduleService.findScheduleByIdOrThrow(scheduleId);
         Comment comment = commentRepository.findByScheduleAndCommentId(schedule, id);
-        return new CommentSimpleResponseDto(comment.getSchedule(),comment.getCommentUserName(), comment.getCommentDescription(),comment.getCreatedAt());
+        return new CommentSimpleResponseDto(comment.getSchedule(), comment.getCommentUserName(), comment.getCommentDescription(), comment.getCreatedAt());
     }
 
     // 요구사항 2단계 comment 다건조회
@@ -62,7 +62,7 @@ public class CommentService {
     @Transactional
     public void deleteComment(Long id, Long commentId) {
         Schedule schedule = scheduleService.findScheduleByIdOrThrow(id);
-        Comment comment = schedule.getCommentList().stream().filter(c->c.getId().equals(commentId)).findFirst().orElseThrow();
+        Comment comment = schedule.getCommentList().stream().filter(c -> c.getId().equals(commentId)).findFirst().orElseThrow();
         schedule.delete(comment);
     }
 

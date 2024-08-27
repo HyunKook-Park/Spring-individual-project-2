@@ -11,18 +11,22 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class User extends TimeStamped {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", nullable = false )
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", nullable = false)
     private Long id;
 
-    @Column(name="user_name", nullable = false )
+    @Column(name = "user_name", nullable = false)
     private String userName;
 
-    @Column(name="user_email", nullable = false )
+    @Column(name = "user_email", nullable = false)
     private String userEmail;
 
-    @OneToMany(mappedBy="user", orphanRemoval = true)
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<ScheduleManager> scheduleManagerList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "schedule", orphanRemoval = true)
+    private List<Schedule> scheduleList = new ArrayList<>();
 
     public User(String userName) {
         this.userName = userName;

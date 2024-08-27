@@ -18,13 +18,13 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public UserSaveResponseDto saveUser(UserSaveRequestDto requestDto){
+    public UserSaveResponseDto saveUser(UserSaveRequestDto requestDto) {
         User user = new User(requestDto.getUserName());
         User saveUser = userRepository.save(user);
         return new UserSaveResponseDto(saveUser.getUserName());
     }
 
-    public List<UserSimpleResponseDto> getAllUsers(){
+    public List<UserSimpleResponseDto> getAllUsers() {
         List<User> userList = userRepository.findAll();
         List<UserSimpleResponseDto> dtoList = new ArrayList<>();
         for (User user : userList) {
@@ -35,20 +35,20 @@ public class UserService {
     }
 
     public UserDetailResponseDto getUser(Long id) {
-        User user = userRepository.findById(id).orElseThrow(()-> new NoSuchElementException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
         return new UserDetailResponseDto(user.getUserName());
     }
 
     @Transactional
     public UserUpdateResponseDto updateUser(Long id, UserUpdateRequestDto requestDto) {
-        User user = userRepository.findById(id).orElseThrow(()-> new NoSuchElementException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
         user.update(requestDto.getUserName());
         return new UserUpdateResponseDto(user.getUserName());
     }
 
     @Transactional
     public void deleteUser(Long id) {
-        User user = userRepository.findById(id).orElseThrow(()-> new NoSuchElementException("User not found"));
+        User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
         userRepository.delete(user);
     }
 

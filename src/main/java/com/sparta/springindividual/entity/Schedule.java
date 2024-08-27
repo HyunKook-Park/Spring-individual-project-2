@@ -28,8 +28,13 @@ public class Schedule extends TimeStamped {
     private List<Comment> commentList = new ArrayList<>();
 
     // ScheduleManger 1:N
-    @OneToMany(mappedBy="schedule", orphanRemoval = true)
+    @OneToMany(mappedBy = "schedule", orphanRemoval = true)
     private List<ScheduleManager> scheduleManagerList = new ArrayList<>();
+
+    // User N:1
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
     public Schedule(String scheduleUsername, String title, String description) {

@@ -32,8 +32,7 @@ public class ScheduleService {
     @Transactional(readOnly = true)
     public ScheduleDetailResponseDto getSchedule(Long id) {
         Schedule schedule = findScheduleByIdOrThrow(id);
-
-        return new ScheduleDetailResponseDto(schedule.getId(), schedule.getScheduleUsername(), schedule.getTitle(), schedule.getDescription(), schedule.getCreatedAt());
+        return new ScheduleDetailResponseDto(schedule.getId(), schedule.getTitle(), schedule.getDescription(), schedule.getCreatedAt());
     }
 
     // 요구사항 1단계 schedule 수정

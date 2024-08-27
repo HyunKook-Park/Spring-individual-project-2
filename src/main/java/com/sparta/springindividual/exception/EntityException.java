@@ -19,6 +19,6 @@ public class EntityException {
 
 
     public Comment findCommentByIdOrThrow(Long commentUserId) {
-        return commentRepository.findById(commentUserId).orElseThrow(()->new NoSuchElementException("Schedule not found"));
+        return commentRepository.findById(commentUserId).orElseThrow(() -> new NoSuchElementException("Schedule not found"));
     }
 }
