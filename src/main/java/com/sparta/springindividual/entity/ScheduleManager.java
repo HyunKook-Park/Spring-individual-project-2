@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="schedulemanager")
 public class ScheduleManager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

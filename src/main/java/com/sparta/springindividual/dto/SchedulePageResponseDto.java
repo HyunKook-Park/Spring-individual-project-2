@@ -12,14 +12,13 @@ public class SchedulePageResponseDto {
     private final Long commentCount;
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
-    private final String scheduleUserName;
 
-    public SchedulePageResponseDto(String title, String description, Long commentCount, LocalDateTime createdAt, LocalDateTime modifiedAt, String scheduleUserName) {
-        this.title = title;
-        this.description = description;
-        this.commentCount = commentCount;
-        this.createdAt = createdAt;
-        this.modifiedAt = modifiedAt;
-        this.scheduleUserName = scheduleUserName;
+
+    public SchedulePageResponseDto(String title, String description, Long commentCount, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.title=title;
+        this.description=description;
+        this.commentCount=commentCount;
+        this.createdAt=createdAt;
+        this.modifiedAt=modifiedAt;
     }
 }

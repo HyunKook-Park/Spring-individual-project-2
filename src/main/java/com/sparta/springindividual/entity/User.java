@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Getter
+@Table(name = "user")
 public class User extends TimeStamped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class User extends TimeStamped {
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<ScheduleManager> scheduleManagerList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "schedule", orphanRemoval = true)
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Schedule> scheduleList = new ArrayList<>();
 
     public User(String userName) {

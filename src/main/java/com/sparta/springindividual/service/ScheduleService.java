@@ -27,9 +27,9 @@ public class ScheduleService {
     // 요구사항 1단계 schedule 저장
     @Transactional
     public ScheduleSaveResponseDto saveSchedule(ScheduleSaveRequestDto requestDto) {
-        Schedule schedule = new Schedule(requestDto.getScheduleUserName(), requestDto.getTitle(), requestDto.getDescription());
+        Schedule schedule = new Schedule(requestDto.getTitle(), requestDto.getDescription());
         Schedule savedSchedule = scheduleRepository.save(schedule);
-        return new ScheduleSaveResponseDto(savedSchedule.getId(), savedSchedule.getScheduleUsername(), savedSchedule.getTitle(), savedSchedule.getDescription(), savedSchedule.getCreatedAt());
+        return new ScheduleSaveResponseDto(savedSchedule.getId(), savedSchedule.getTitle(), savedSchedule.getDescription(), savedSchedule.getCreatedAt());
     }
 
     // 요구사항 1단계 schedule 조회, 요구사항 6단계 user 정보 추가 조회
@@ -50,7 +50,7 @@ public class ScheduleService {
     public ScheduleUpdateResponseDto updateSchedule(Long id, ScheduleUpdateRequestDto requestDto) {
         Schedule schedule = findScheduleByIdOrThrow(id);
         schedule.update(requestDto.getScheduleUserName(), requestDto.getTitle(), requestDto.getDescription());
-        return new ScheduleUpdateResponseDto(schedule.getId(), schedule.getScheduleUsername(), schedule.getTitle(), schedule.getDescription(), schedule.getModifiedAt());
+        return new ScheduleUpdateResponseDto(schedule.getId(), schedule.getTitle(), schedule.getDescription(), schedule.getModifiedAt());
     }
 
     // 예외처리
@@ -72,8 +72,7 @@ public class ScheduleService {
                     schedule.getDescription(),
                     commentCount,
                     schedule.getCreatedAt(),
-                    schedule.getModifiedAt(),
-                    schedule.getScheduleUsername()
+                    schedule.getModifiedAt()
             );
         });
     }

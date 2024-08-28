@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     // 외래키 가져오는 Query Method
     Long countByScheduleId(Long scheduleId);
-    Comment findByScheduleAndCommentId(Schedule schedule, Long commentId);
+    Comment findByScheduleAndId(Schedule schedule, Long commentId);
 }

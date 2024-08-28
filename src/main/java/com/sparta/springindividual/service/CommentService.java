@@ -3,7 +3,6 @@ package com.sparta.springindividual.service;
 import com.sparta.springindividual.dto.*;
 import com.sparta.springindividual.entity.Comment;
 import com.sparta.springindividual.entity.Schedule;
-import com.sparta.springindividual.exception.EntityException;
 import com.sparta.springindividual.repository.CommentRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -33,7 +32,7 @@ public class CommentService {
     @Transactional(readOnly = true)
     public CommentSimpleResponseDto getComment(Long scheduleId, Long id) {
         Schedule schedule = scheduleService.findScheduleByIdOrThrow(scheduleId);
-        Comment comment = commentRepository.findByScheduleAndCommentId(schedule, id);
+        Comment comment = commentRepository.findByScheduleAndId(schedule, id);
         return new CommentSimpleResponseDto(comment.getSchedule(), comment.getCommentUserName(), comment.getCommentDescription(), comment.getCreatedAt());
     }
 
@@ -53,7 +52,7 @@ public class CommentService {
     @Transactional
     public CommentUpdateResponseDto updateComment(Long id, Long commentId, CommentUpdateRequestDto requestDto) {
         Schedule schedule = scheduleService.findScheduleByIdOrThrow(id);
-        Comment comment = commentRepository.findByScheduleAndCommentId(schedule, commentId);
+        Comment comment = commentRepository.findByScheduleAndId(schedule, commentId);
         comment.update(requestDto.getCommentDescription());
         return new CommentUpdateResponseDto(comment.getSchedule(), comment.getCommentUserName(), comment.getCommentDescription(), comment.getModifiedAt());
     }

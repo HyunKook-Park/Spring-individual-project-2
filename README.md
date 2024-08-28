@@ -4,9 +4,9 @@
 
 | API (Schedule) | Method | URL                | Request                              |                                     Response                                      |    상태코드    | 
 |----------------|--------|--------------------|--------------------------------------|:---------------------------------------------------------------------------------:|:----------:|
-| 일정 등록          | POST   | /api/schedule      | body <br/>(UserName, Title. Contents) |  등록정보  <br/>(UserId, UserName, Title, Contents, CreationDate, ModificationDate)   | 200: 정상 등록 |
-| 일정 조회          | GET    | /api/schedule/{id} | PathVariable <br/>(UserId)           | 단건 응답 정보 <br/>(UserId, UserName, Title, Contents, CreationDate, ModificationDate) | 200: 정상 조회 |
-| 일정 수정          | PUT    | /api/schedule/{id} | PathVariable <br/>(UserId)           |  수정 정보 <br/>(UserId, UserName, Title, Contents, CreationDate, ModificationDate)   | 200: 정상 수정 |
+| 일정 등록          | POST   | /api/schedule      | body <br/>(UserName, Title. Contents) |   등록정보  <br/>(scheduleId, Title, Contents, CreationDate, ModificationDate)   | 200: 정상 등록 |
+| 일정 조회          | GET    | /api/schedule/{id} | PathVariable <br/>(UserId)           | 단건 응답 정보 <br/>(scheduleId, Title, Contents, CreationDate, ModificationDate) | 200: 정상 조회 |
+| 일정 수정          | PUT    | /api/schedule/{id} | PathVariable <br/>(UserId)           |  수정 정보 <br/>(scheduleId, Title, Contents, CreationDate, ModificationDate)   | 200: 정상 수정 |
 
 | API (Comment) | Method | URL                               | Request                                                         |                                                   Response                                                    |    상태코드    | 
 |---------------|--------|-----------------------------------|-----------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------:|:----------:|

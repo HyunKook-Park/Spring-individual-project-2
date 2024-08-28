@@ -17,8 +17,6 @@ public class Schedule extends TimeStamped {
     @Column(name = "schedule_id", nullable = false)
     private Long id;
 
-    @Column(name = "schedule_name", nullable = false)
-    private String scheduleUsername;
     @Column(name = "title", nullable = false)
     private String title;
     @Column(name = "description", nullable = false)
@@ -36,15 +34,12 @@ public class Schedule extends TimeStamped {
     @JoinColumn(name = "user_id")
     private User user;
 
-
-    public Schedule(String scheduleUsername, String title, String description) {
-        this.scheduleUsername = scheduleUsername;
+    public Schedule(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
     public void update(String scheduleUserName, String title, String description) {
-        this.scheduleUsername = scheduleUserName;
         this.title = title;
         this.description = description;
     }
